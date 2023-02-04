@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hurry Hide!</h1>
+
+    <label id = "results"></label><br>
+    <label id = "streak"></label><br>
+    <label id = "highscore"></label><br>
+    
+    <button type="button" id="tree"> Hide by the tree </button>
+    <button type="button" id="bush"> Hide by the bush </button>
+    <button type="button" id="swings"> Hide by the swings </button>
+
+    <script>
+        let seek = 0;
+        let streak = 0;
+        let highscore = 0;
+
+        function changeStreak(found){
+            if(found == true){
+                streak = 0;
+            }
+            else{
+                streak += 1;
+                if (streak > highscore){
+                    highscore = streak
+                }
+            }return streak;
+        }
+
+        document.getElementById("tree").onclick = function(){
+            seek = Math.floor(Math.random() * 3) + 1;
+            if (seek == 1){
+                document.getElementById("results").innerHTML = "You've been found";
+                changeStreak(true);
+                document.getElementById("streak").innerHTML = "Streak: " + streak;
+            }
+            else{
+                document.getElementById("results").innerHTML = "You got lucky this time";
+                changeStreak(false);
+                document.getElementById("streak").innerHTML = "Streak: " + streak;
+                document.getElementById("highscore").innerHTML = "Highscore: " + highscore;
+            }
+        }
+
+        document.getElementById("bush").onclick = function(){
+            seek = Math.floor(Math.random() * 3) + 1;
+            if (seek == 2){
+                document.getElementById("results").innerHTML = "You've been found";
+                changeStreak(true);
+                document.getElementById("streak").innerHTML = "Streak: " + streak;
+            }
+            else{
+                document.getElementById("results").innerHTML = "You got lucky this time";
+                changeStreak(false);
+                document.getElementById("streak").innerHTML = "Streak: " + streak;
+                document.getElementById("highscore").innerHTML = "Highscore: " + highscore;
+            }
+        }
+
+        document.getElementById("swings").onclick = function(){
+            seek = Math.floor(Math.random() * 3) + 1;
+            if (seek == 3){
+                document.getElementById("results").innerHTML = "You've been found";
+                changeStreak(true);
+                document.getElementById("streak").innerHTML = "Streak: " + streak;
+            }
+            else{
+                document.getElementById("results").innerHTML = "You got lucky this time";
+                changeStreak(false);
+                document.getElementById("streak").innerHTML = "Streak: " + streak;
+                document.getElementById("highscore").innerHTML = "Highscore: " + highscore;
+            }
+        }
+    </script>
+</body>
+</html>

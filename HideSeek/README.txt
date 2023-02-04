@@ -1,0 +1,3 @@
+The index html file needs the Java index file to work
+The hideseek does not need either
+You can start the application by selecting either of the html files
