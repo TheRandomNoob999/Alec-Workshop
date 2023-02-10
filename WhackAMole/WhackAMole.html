@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="title">Wanna help me get rid of these moles?</h1>
+    <h2 id="title2">Click the start button to start whacking them</h2>
+    <button type="button" id="start">Start</button><br>
+    <button type="button" id="button1"> <img src="http://starmen.net/zodiac/molesm.png" width="128" height="128" draggable="false"> </button>
+    <button type="button" id="button2"> <img src="http://starmen.net/zodiac/molesm.png" width="128" height="128" draggable="false"> </button>
+    <button type="button" id="button3"> <img src="http://starmen.net/zodiac/molesm.png" width="128" height="128" draggable="false"> </button>
+    <button type="button" id="button4"> <img src="http://starmen.net/zodiac/molesm.png" width="128" height="128" draggable="false"> </button>
+    <button type="button" id="button5"> <img src="http://starmen.net/zodiac/molesm.png" width="128" height="128" draggable="false"> </button>
+    <button type="button" id="button6"> <img src="http://starmen.net/zodiac/molesm.png" width="128" height="128" draggable="false"> </button>
+    
+    <script>
+        let totalWacked = 0;
+        let looping = false;
+
+        function setUp(){
+            document.getElementById("button1").style.visibility = "hidden";
+            document.getElementById("button2").style.visibility = "hidden";
+            document.getElementById("button3").style.visibility = "hidden";
+            document.getElementById("button4").style.visibility = "hidden";
+            document.getElementById("button5").style.visibility = "hidden";
+            document.getElementById("button6").style.visibility = "hidden";
+            document.getElementById("start").style.visibility = "visible";
+            document.getElementById("title").style.visibility = "visible";
+            document.getElementById("title2").style.visibility = "visible";
+        }
+
+        function clicked(buttonID){
+            document.getElementById(buttonID).style.visibility = "hidden";
+            totalWacked += 1;
+            if(totalWacked == 10){
+                looping = false;
+                setUp();
+            }
+        }
+
+        function spawnMole(){
+            let random = Math.floor(Math.random() * 6) + 1;
+            let buttonID = "button" + random;
+            if (document.getElementById(buttonID).style.visibility == "visible"){
+                spawnMole()
+            }
+            else{
+                document.getElementById(buttonID).style.visibility = "visible";
+            }
+        }
+
+        function failSave(){
+            if (looping == true){
+                looping = false;
+                setUp();
+            }
+        }
+
+        function loop(){
+            totalWacked = 0;
+            setTimeout(spawnMole, ((Math.random() * 6) + 2) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 5) + 3) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 4) + 3) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 2) + 1) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 2) + 2) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 6) + 2) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 5) + 4) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 4) + 3) * 1000);
+            setTimeout(spawnMole, ((Math.random() * 3) + 2) * 1000);
+            setTimeout(spawnMole, (Math.random() * 3) * 1000);
+            setTimeout(failSave, 25000)
+        }
+
+        function start(){
+            document.getElementById("start").style.visibility = "hidden";
+            document.getElementById("title").style.visibility = "hidden";
+            document.getElementById("title2").style.visibility = "hidden";
+            
+            looping = true;
+            loop();
+        }
+        document.getElementById("start").onclick = function(){
+            start();
+        }
+
+        document.getElementById("button1").onclick = function(){
+            clicked("button1")
+        }
+        document.getElementById("button2").onclick = function(){
+            clicked("button2")
+        }
+        document.getElementById("button3").onclick = function(){
+            clicked("button3")
+        }
+        document.getElementById("button4").onclick = function(){
+            clicked("button4")
+        }
+        document.getElementById("button5").onclick = function(){
+            clicked("button5")
+        }
+        document.getElementById("button6").onclick = function(){
+            clicked("button6")
+        }
+        setUp();
+    </script>
+</body>
+</html>
