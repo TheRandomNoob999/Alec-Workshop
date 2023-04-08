@@ -1,0 +1,3 @@
+These are my completed Python projects
+Once again the code in these are extremely bad and completely unorganized
+I do not care what you do with this code
