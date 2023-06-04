@@ -1,0 +1,8 @@
+1
+100
+200
+100
+100
+0
+0
+First row is the Day, Second is Health, Third is Money, Fourth is Sleep, Fifth is Hunger, Sixth is Job, Seventh is the bed currently owned
